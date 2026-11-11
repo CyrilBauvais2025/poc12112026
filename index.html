@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof of Concept · slides, sources and videos</title>
+<meta name="description" content="Slides, sources and videos from the Proof of Concept session, Deeptech Entrepreneurship module, Genopole × Université d’Évry, 12 November 2026.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#111418">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f6f7f9; --ink:#0f1318; --text:#2a3139; --muted:#5f6873; --line:#d5d9df;
+  --bar:#111418; --orange:#d9541a; --orange-hi:#ff7a3d; --green:#1f8a5b; --violet:#6d4bc3; --violet-bg:#f6f3fc;
+  --sans:Geist, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.55;
+  background-image:linear-gradient(rgba(20,30,45,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(20,30,45,.045) 1px,transparent 1px);
+  background-size:48px 48px}
+a{color:var(--ink);text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--orange)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--orange-hi);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+.bar{background:var(--bar);color:#e8eaed}
+.bar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.bar .tag{color:var(--orange-hi)}
+.bar .date{color:#9aa4b0;white-space:nowrap}
+
+.hero{padding:56px 0 40px}
+.kicker{margin:0 0 14px;font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+h1{margin:0;font-size:clamp(36px,7vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:700;color:var(--ink);text-wrap:balance}
+.lede{margin:18px 0 0;max-width:38em;font-size:clamp(18px,2.4vw,22px);color:var(--text)}
+.who{margin:22px 0 0;font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-weight:600;font-size:17px;text-decoration:none;line-height:1.2}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn small{font-family:var(--mono);font-weight:500;font-size:13px;opacity:.85}
+
+nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.9)}
+nav.toc ul{list-style:none;margin:0;padding:12px 0;display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--mono);font-size:14px}
+nav.toc a{text-decoration:none;color:var(--muted)}
+nav.toc a:hover{color:var(--orange)}
+
+section{padding:44px 0 8px}
+.label{margin:0 0 8px;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+h2{margin:0 0 6px;font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.intro{margin:0 0 22px;max-width:40em;color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-left:8px solid var(--green);padding:18px 20px}
+.card.stop{border-left-color:var(--orange)}
+.card.blue{border-left-color:#2f6fde}
+.card.grey{border-left-color:#8b95a1}
+.card.violet{border-left-color:var(--violet);background:var(--violet-bg)}
+.card .tag{margin:0 0 4px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card h3{margin:0 0 6px;font-size:21px;line-height:1.2;color:var(--ink)}
+.card p{margin:0 0 10px}
+.card ul{margin:0;padding-left:1.1em}
+.card li{margin:4px 0}
+.card li::marker{color:var(--orange)}
+
+.assign{background:var(--bar);color:#e8eaed;padding:26px 24px;margin-top:18px}
+.assign h3{margin:0 0 10px;color:#fff;font-size:24px}
+.assign ol{margin:0;padding-left:1.2em}
+.assign li{margin:6px 0}
+.assign b{color:#fff}
+.assign a{color:var(--orange-hi);text-decoration-color:var(--orange-hi)}
+
+.videos{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.videos li{display:grid;grid-template-columns:86px 1fr;gap:6px 16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.videos .min{font-family:var(--mono);font-size:14px;color:var(--orange);white-space:nowrap}
+.videos .why{display:block;color:var(--muted);font-size:16px}
+
+footer{margin-top:48px;background:var(--bar);color:#c9cfd6;padding:36px 0 44px}
+footer h2{color:#fff}
+footer a{color:#fff}
+footer .small{margin-top:22px;font-family:var(--mono);font-size:13px;color:#8b95a1}
+
+@media (max-width:560px){
+  body{font-size:17px}
+  .hero{padding:36px 0 28px}
+  .btn{width:100%;justify-content:space-between}
+  .videos li{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap"><span class="tag">// proof of concept</span><span class="date">12.11.2026</span></div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Deeptech Entrepreneurship · Session 2 · Part 1</p>
+    <h1>Proof of Concept: slides, sources and videos</h1>
+    <p class="lede">Everything from today’s session: the slides, the source of each case, and a few videos if you want to go further.</p>
+    <p class="who">Cyril Bauvais · Genopole × Université d’Évry</p>
+    <div class="actions">
+      <a class="btn primary" href="Proof-of-Concept-Genopole-UEVE-2026-11-12.pdf" download>Download the slides <small>PDF · 5 MB</small></a>
+      <a class="btn" href="mailto:cyril@whitebeetle.fr">cyril@whitebeetle.fr</a>
+      <a class="btn" href="https://www.linkedin.com/in/cyrilbauvais" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="On this page">
+  <div class="wrap">
+    <ul>
+      <li><a href="#assignment">Your assignment</a></li>
+      <li><a href="#rules">The rules</a></li>
+      <li><a href="#cases">The cases</a></li>
+      <li><a href="#pitch">Pitching a POC</a></li>
+      <li><a href="#start">Starting a company</a></li>
+      <li><a href="#videos">Videos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<section id="assignment">
+  <div class="wrap">
+    <p class="label">Your turn</p>
+    <h2>Each group can send me two slides.</h2>
+    <div class="assign">
+      <h3>What to send</h3>
+      <ol>
+        <li><b>The run sheet.</b> Six blocks: hypothesis, experiment, KPI, thresholds, time and money, status.</li>
+        <li><b>The pitch slide.</b> Three zones: proven so far, next proof, what you need.</li>
+        <li>The title of both is your critical hypothesis, written as a question.</li>
+        <li>Real numbers. If you do not know them yet, write your best estimate.</li>
+      </ol>
+      <p style="margin:14px 0 0">Send both to <a href="mailto:cyril@whitebeetle.fr">cyril@whitebeetle.fr</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <p class="label">The basics and the rules</p>
+    <h2>A POC is a project.</h2>
+    <p class="intro">An objective, a KPI, a timeline and a decision. These are the sources behind the first part of the session.</p>
+    <div class="grid">
+      <div class="card grey">
+        <p class="tag">The NASA scale</p>
+        <h3>Technology Readiness Levels</h3>
+        <p>Nine levels. Level 3 is called “proof of concept”, and each level has exit criteria written in advance.</p>
+        <ul>
+          <li><a href="https://esto.nasa.gov/trl" target="_blank" rel="noopener">NASA ESTO: the TRL table</a></li>
+        </ul>
+      </div>
+      <div class="card grey">
+        <p class="tag">Technical proof or market proof</p>
+        <h3>Invention risk versus market risk</h3>
+        <p>Does the technology work, or will someone pay for it? Two different questions.</p>
+        <ul>
+          <li><a href="https://steveblank.com/2009/05/28/vertical-markets-2-customermarket-risk-versus-invention-risk/" target="_blank" rel="noopener">Steve Blank, 2009</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Rule 1</p>
+        <h3>Tackle the monkey first</h3>
+        <p>Test the hardest part first. The pedestal can wait.</p>
+        <ul>
+          <li><a href="https://x.company/blog/posts/tackle-the-monkey-first/" target="_blank" rel="noopener">Astro Teller, X blog, 2016</a></li>
+        </ul>
+      </div>
+      <div class="card stop">
+        <p class="tag">Rule 2</p>
+        <h3>Decide before you start</h3>
+        <p>Write the go, pivot and stop thresholds before the first experiment. The more you have spent, the harder it is to stop: this is called escalation of commitment.</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=VYPKMGyJuMU" target="_blank" rel="noopener">Annie Duke, “Knowing When to Quit” (video)</a></li>
+        </ul>
+      </div>
+      <div class="card grey">
+        <p class="tag">One more tool</p>
+        <h3>The eight DARPA questions</h3>
+        <p>What DARPA asks before funding a programme. The last three are about cost, time and the “exams” that check for success.</p>
+        <ul>
+          <li><a href="https://www.darpa.mil/about/heilmeier-catechism" target="_blank" rel="noopener">The Heilmeier Catechism</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <p class="label">The cases</p>
+    <h2>Four cases, read with the run sheet.</h2>
+    <p class="intro">Three real stories and one trap.</p>
+    <div class="grid">
+      <div class="card stop">
+        <p class="tag">Case 1 · Alphabet X · stopped</p>
+        <h3>Foghorn: fuel from seawater</h3>
+        <p>The technology worked. The cost threshold was out of reach, so the team stopped.</p>
+        <ul>
+          <li><a href="https://x.company/projects/foghorn" target="_blank" rel="noopener">X: the Foghorn project</a></li>
+          <li><a href="https://x.company/blog/posts/three-things-i-learned-from-turning-seawater-into-fuel" target="_blank" rel="noopener">Kathy Hannun, “Three things I learned from turning seawater into fuel”</a></li>
+        </ul>
+      </div>
+      <div class="card blue">
+        <p class="tag">Case 2 · SpaceX · success</p>
+        <h3>Falcon 1: orbit at the fourth attempt</h3>
+        <p>Three failures, then orbit in September 2008 with the last money available.</p>
+        <ul>
+          <li><a href="https://physicstoday.aip.org/news/spacex-rocket-reaches-orbit-after-fourth-attempt" target="_blank" rel="noopener">Physics Today, 2008</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Falcon_1" target="_blank" rel="noopener">Falcon 1 launch history, Wikipedia</a></li>
+          <li><a href="https://ntrs.nasa.gov/api/citations/20150009324/downloads/20150009324.pdf" target="_blank" rel="noopener">NASA, COTS programme lessons learned (PDF)</a></li>
+        </ul>
+      </div>
+      <div class="card blue">
+        <p class="tag">Case 3 · Intellia and Regeneron · success</p>
+        <h3>NTLA-2001: CRISPR inside a patient</h3>
+        <p>Six patients, one KPI. The TTR protein dropped by 52 % and 87 % at the two doses.</p>
+        <ul>
+          <li><a href="https://doi.org/10.1056/NEJMoa2107454" target="_blank" rel="noopener">Gillmore et al., New England Journal of Medicine, 2021</a></li>
+        </ul>
+      </div>
+      <div class="card stop">
+        <p class="tag">Case 4 · Artificial intelligence · a trap</p>
+        <h3>99 % accuracy, 0 % sensitivity</h3>
+        <p>A fictional example, but a real trap: when a disease is rare, accuracy says very little. Choose the KPI before the POC.</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=tsPuVAMaADY" target="_blank" rel="noopener">Andrew Ng, from proof of concept to production (video)</a></li>
+          <li><a href="https://www.euronews.com/2018/10/10/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women" target="_blank" rel="noopener">Reuters (via Euronews), 2018: Amazon scraps a biased recruiting model</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pitch">
+  <div class="wrap">
+    <p class="label">From running to pitching</p>
+    <h2>What investors want on the POC slide.</h2>
+    <p class="intro">What is proven, what you will prove next, and what you need. These guides come from investors.</p>
+    <div class="grid">
+      <div class="card grey">
+        <h3>Deeptech pitch deck</h3>
+        <ul><li><a href="https://hard2beat.vc/insights-resources/10-slides-you-need-in-your-deeptech-startup-pitch-deck/" target="_blank" rel="noopener">Hard2beat: 10 slides you need</a></li></ul>
+      </div>
+      <div class="card grey">
+        <h3>Biotech pitch deck</h3>
+        <ul><li><a href="https://www.pillar.vc/playlist/article/6-key-slides-to-include-in-a-biotech-pitch-deck/" target="_blank" rel="noopener">Pillar VC: 6 key slides</a></li></ul>
+      </div>
+      <div class="card grey">
+        <h3>Biotech and medtech tips</h3>
+        <ul><li><a href="https://www.massbio.org/news/recent-news/pitch-deck-tips-for-biotech-and-medtech-start-ups/" target="_blank" rel="noopener">MassBio: pitch deck tips</a></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <p class="label">My testimony</p>
+    <h2>Do not be afraid to start.</h2>
+    <p class="intro">You are in a good place, you will find people to help you, and France backs your first steps.</p>
+    <div class="grid">
+      <div class="card violet">
+        <p class="tag">The place</p>
+        <h3>Genopole and Shaker</h3>
+        <p>Shaker is Genopole’s programme for students, PhDs and young engineers with a biotech idea.</p>
+        <ul>
+          <li><a href="https://www.genopole.fr" target="_blank" rel="noopener">genopole.fr</a></li>
+          <li><a href="https://www.abg.asso.fr/en/article/2708/en-shaker-2023-by-genopole-2708" target="_blank" rel="noopener">Shaker by Genopole, 17th edition</a></li>
+        </ul>
+      </div>
+      <div class="card violet">
+        <p class="tag">The people</p>
+        <h3>Réseau Entreprendre</h3>
+        <p>Business owners who coach new founders, for free.</p>
+        <ul><li><a href="https://www.reseau-entreprendre.org" target="_blank" rel="noopener">reseau-entreprendre.org</a></li></ul>
+      </div>
+      <div class="card violet">
+        <p class="tag">The money</p>
+        <h3>Bpifrance</h3>
+        <p>Grants and loans come before any investor.</p>
+        <ul><li><a href="https://www.bpifrance.fr/catalogue-offres/bourse-french-tech" target="_blank" rel="noopener">Bourse French Tech</a></li></ul>
+      </div>
+      <div class="card violet">
+        <p class="tag">My story</p>
+        <h3>Synsight and the SABNP lab</h3>
+        <p>How a lab at the University of Évry and a startup worked together on MTBench.</p>
+        <ul><li><a href="https://www.genopole.fr/temps-forts/success-stories/sabnp-synsight-genopole/" target="_blank" rel="noopener">Genopole success story</a></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <p class="label">To go further</p>
+    <h2>Five videos.</h2>
+    <p class="intro">From 15 minutes to one hour.</p>
+    <ul class="videos">
+      <li><span class="min">15 min</span><span><a href="https://www.youtube.com/watch?v=2t13Rq4oc7A" target="_blank" rel="noopener">Astro Teller, “The unexpected benefit of celebrating failure”</a><span class="why">TED 2016. Why X rewards its teams for stopping their own projects.</span></span></li>
+      <li><span class="min">24 min</span><span><a href="https://www.youtube.com/watch?v=C1DlZWfI6rk" target="_blank" rel="noopener">Jared Friedman, “Advice for Hard-tech and Biotech Founders”</a><span class="why">Y Combinator, 2019. What to prove first, fast and at low cost.</span></span></li>
+      <li><span class="min">19 min</span><span><a href="https://www.youtube.com/watch?v=VYPKMGyJuMU" target="_blank" rel="noopener">Annie Duke, “Knowing When to Quit”</a><span class="why">Why we continue too long, and why stopping on time is a skill.</span></span></li>
+      <li><span class="min">62 min</span><span><a href="https://www.youtube.com/watch?v=tsPuVAMaADY" target="_blank" rel="noopener">Andrew Ng, “Bridging AI’s Proof-of-Concept to Production Gap”</a><span class="why">Stanford HAI, 2020. For the computer scientists: why an AI POC is not yet a product.</span></span></li>
+      <li><span class="min">48 min</span><span><a href="https://www.youtube.com/watch?v=erDE2e69dlc" target="_blank" rel="noopener">“Inside The Hard Tech Startups Turning Sci-Fi Into Reality”</a><span class="why">Y Combinator, 2024.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="label" style="color:var(--orange-hi)">Contact</p>
+    <h2>Questions after the session?</h2>
+    <p>Write to me: <a href="mailto:cyril@whitebeetle.fr">cyril@whitebeetle.fr</a> · <a href="https://www.linkedin.com/in/cyrilbauvais" target="_blank" rel="noopener">LinkedIn</a></p>
+    <p class="small">Cyril Bauvais · Proof of Concept · Deeptech Entrepreneurship module · Genopole × Université d’Évry · 12 November 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
